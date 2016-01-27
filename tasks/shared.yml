@@ -1,0 +1,14 @@
+---
+
+- name: shared | Ensure shared paths targets are absent
+  file:
+    state: absent
+    path:  "{{ elao_deploy_to }}/{{ elao_deploy_dir_releases }}/{{ __elao_deploy_release }}/{{ item }}"
+  with_items: elao_deploy_shared_paths
+
+- name: shared | Create softlinks for shared paths
+  file:
+    state: link
+    path:  "{{ elao_deploy_to }}/{{ elao_deploy_dir_releases }}/{{ __elao_deploy_release }}/{{ item }}"
+    src:   "{{ elao_deploy_to }}/{{ elao_deploy_dir_shared }}/{{ item }}"
+  with_items: elao_deploy_shared_paths

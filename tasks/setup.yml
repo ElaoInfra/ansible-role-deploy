@@ -1,0 +1,16 @@
+---
+
+- name: setup > Ensure deployment base path exists
+  file:
+    state: directory
+    path:  "{{ elao_deploy_to }}"
+
+- name: setup > Ensure releases folder exists
+  file:
+    state: directory
+    path:  "{{ elao_deploy_to }}/{{ elao_deploy_dir_releases }}"
+
+- name: setup > Ensure shared folder exists
+  file:
+    state: directory
+    path:  "{{ elao_deploy_to }}/{{ elao_deploy_dir_shared }}"

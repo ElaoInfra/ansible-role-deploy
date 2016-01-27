@@ -1,0 +1,14 @@
+---
+
+- name: release/git | Update remote repository
+  git:
+    repo:           "{{ elao_deploy_git_repo }}"
+    dest:           "{{ elao_deploy_to }}/repo"
+    version:        "{{ elao_deploy_git_branch }}"
+    accept_hostkey: true
+    update:         yes
+
+- name: release/git | Export a copy of the repo
+  command: git checkout-index -f -a --prefix="{{ elao_deploy_to }}/{{ elao_deploy_dir_releases }}/{{ __elao_deploy_release }}/"
+  args:
+    chdir: "{{ elao_deploy_to }}/repo"

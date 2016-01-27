@@ -1,0 +1,23 @@
+---
+
+# From / To
+elao_deploy_from: "{{ playbook_dir }}"
+elao_deploy_to:   /var/www
+
+# Dirs
+elao_deploy_dir_releases: releases
+elao_deploy_dir_shared:   shared
+elao_deploy_dir_current:  current
+
+# Shared
+elao_deploy_shared_paths: []
+
+# Releases
+elao_deploy_releases: 3
+
+# Strategy
+elao_deploy_strategy: git
+
+# Strategy - Git
+elao_deploy_git_repo:   git@github.com:foo/bar.git
+elao_deploy_git_branch: master
