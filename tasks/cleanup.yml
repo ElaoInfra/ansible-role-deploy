@@ -1,5 +1,5 @@
 ---
 
-- name: cleanup | Releases
+- name: cleanup > Releases
   shell: ls -1dt {{ elao_deploy_dir_releases ~ '/*' }} | tail -n +{{ elao_deploy_releases | int + 1 }} | xargs rm -rf
   when: elao_deploy_releases > 0

@@ -1,6 +1,6 @@
 ---
 
-- name: release/git | Cached repository
+- name: release/git > Cached repository
   git:
     repo:           "{{ elao_deploy_git_repo }}"
     dest:           "{{ elao_deploy_dir_shared ~ '/cached-copy' }}"
@@ -8,7 +8,7 @@
     accept_hostkey: true
     update:         yes
 
-- name: release/git | Export repository
+- name: release/git > Export repository
   command: git checkout-index -f -a --prefix="{{ elao_deploy_dir_releases ~ '/' ~ __elao_deploy_release ~ '/' }}"
   args:
     chdir: "{{ elao_deploy_dir_shared ~ '/cached-copy' }}"

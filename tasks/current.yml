@@ -1,6 +1,6 @@
 ---
 
-- name: current | Link release
+- name: current > Link release
   file:
     path:  "{{ elao_deploy_dir_current }}"
     src:   "{{ elao_deploy_dir_releases ~ '/' ~ __elao_deploy_release }}"
