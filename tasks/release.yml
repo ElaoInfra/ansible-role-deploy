@@ -2,7 +2,7 @@
 
 - name: release > Set
   set_fact:
-    __elao_deploy_release: "{{ lookup('pipe', 'date -u +%Y%m%d%H%M%SZ') }}"
+    __elao_deploy_release: "{{ lookup('pipe', 'date -u +%Y%m%d%H%M%S') }}"
   run_once: true
   when: __elao_deploy_release is not defined
   delegate_to: 127.0.0.1
