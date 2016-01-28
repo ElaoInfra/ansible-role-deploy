@@ -1,15 +1,15 @@
 ---
 
-- name: release > Get version
+- name: release > Set
   set_fact:
     __elao_deploy_release: "{{ lookup('pipe', 'date -u +%Y%m%d%H%M%SZ') }}"
   run_once: true
   when: __elao_deploy_release is not defined
   delegate_to: 127.0.0.1
 
-- include: "release/{{ elao_deploy_strategy|default('git') }}.yml"
+- include: "release/{{ elao_deploy_strategy | default('git') }}.yml"
 
-- name: release | Copy release version into REVISION file
+- name: release | Create REVISION file
   copy:
     content: "{{ __elao_deploy_release }}"
-    dest:    "{{ elao_deploy_to }}/{{ elao_deploy_dir_releases }}/{{ __elao_deploy_release }}/REVISION"
+    dest:    "{{ elao_deploy_dir_releases ~ '/' ~ __elao_deploy_release ~ '/REVISION' }}"

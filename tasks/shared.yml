@@ -1,14 +1,32 @@
 ---
 
-- name: shared | Ensure shared paths targets are absent
+- name: shared | Ensure release targets are absent
   file:
+    path:  "{{ elao_deploy_dir_releases ~ '/' ~  __elao_deploy_release ~ '/' ~ item }}"
     state: absent
-    path:  "{{ elao_deploy_to }}/{{ elao_deploy_dir_releases }}/{{ __elao_deploy_release }}/{{ item }}"
-  with_items: elao_deploy_shared_paths
+  with_items: elao_deploy_shared_files + elao_deploy_shared_dirs
 
-- name: shared | Create softlinks for shared paths
+- name: shared | Ensure shared files directories are present
   file:
+    path:  "{{ (elao_deploy_dir_shared ~ '/' ~ item) | dirname }}"
+    state: directory
+  with_items: elao_deploy_shared_files
+
+- name: shared | Ensure shared files are present
+  file:
+    path:  "{{ elao_deploy_dir_shared ~ '/' ~ item }}"
+    state: touch
+  with_items: elao_deploy_shared_files
+
+- name: shared | Ensure shared dirs are present
+  file:
+    path:  "{{ elao_deploy_dir_shared ~ '/' ~ item }}"
+    state: directory
+  with_items: elao_deploy_shared_dirs
+
+- name: shared | Links
+  file:
+    path:  "{{ elao_deploy_dir_releases ~ '/' ~ __elao_deploy_release ~ '/' ~ item }}"
+    src:   "{{ elao_deploy_dir_shared ~ '/' ~ item }}"
     state: link
-    path:  "{{ elao_deploy_to }}/{{ elao_deploy_dir_releases }}/{{ __elao_deploy_release }}/{{ item }}"
-    src:   "{{ elao_deploy_to }}/{{ elao_deploy_dir_shared }}/{{ item }}"
-  with_items: elao_deploy_shared_paths
+  with_items: elao_deploy_shared_files + elao_deploy_shared_dirs

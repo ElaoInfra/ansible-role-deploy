@@ -1,7 +1,0 @@
----
-
-- name: symlink | Change softlink to new release
-  file:
-    state: link
-    path:  "{{ elao_deploy_to }}/{{ elao_deploy_dir_current }}"
-    src:   "{{ elao_deploy_to }}/{{ elao_deploy_dir_releases }}/{{ __elao_deploy_release }}"

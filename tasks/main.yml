@@ -3,5 +3,5 @@
 - include: setup.yml
 - include: release.yml
 - include: shared.yml
-- include: symlink.yml
+- include: current.yml
 - include: cleanup.yml
