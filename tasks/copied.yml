@@ -1,0 +1,18 @@
+---
+
+- name: copied > Stats copied paths
+  stat:
+    path:  "{{ elao_deploy_dir_current ~ '/' ~ item }}"
+  register: __elao_deploy_copied_paths_stats
+  with_items: elao_deploy_copied_paths
+
+- name: copied > Copy paths
+  synchronize:
+    compress: false
+    recursive: true
+    perms: true
+    src: "{{ elao_deploy_dir_current ~ '/' ~ item.1 ~ '/' if __elao_deploy_copied_paths_stats.results[item.0].stat.isdir else '' }}"
+    dest: "{{ elao_deploy_dir_releases ~ '/' ~ __elao_deploy_release ~ '/' ~ item.1 }}"
+  with_indexed_items: elao_deploy_copied_paths
+  when: __elao_deploy_copied_paths_stats.results[item.0].stat.exists
+

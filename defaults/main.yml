@@ -8,6 +8,9 @@ elao_deploy_dir_releases: "{{ elao_deploy_dir }}/releases"
 elao_deploy_dir_shared:   "{{ elao_deploy_dir }}/shared"
 elao_deploy_dir_current:  "{{ elao_deploy_dir }}/current"
 
+# Copied
+elao_deploy_copied_paths: []
+
 # Shared
 elao_deploy_shared_files: []
 elao_deploy_shared_dirs:  []
