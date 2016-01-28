@@ -8,8 +8,3 @@
   delegate_to: 127.0.0.1
 
 - include: "release/{{ elao_deploy_strategy | default('git') }}.yml"
-
-- name: release > Create REVISION file
-  copy:
-    content: "{{ __elao_deploy_release }}"
-    dest:    "{{ elao_deploy_dir_releases ~ '/' ~ __elao_deploy_release ~ '/REVISION' }}"
