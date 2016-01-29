@@ -1,7 +1,24 @@
 ---
 
-- include: setup.yml
-- include: release.yml
-- include: shared.yml
-- include: current.yml
-- include: cleanup.yml
+- name: Setup
+  include: setup.yml
+
+- name: Release
+  include: release.yml
+
+- name: Shared
+  include: shared.yml
+
+- name: Hooks Before Current
+  include: hook.yml
+  with_items: elao_deploy_hooks_before_current
+
+- name: Current
+  include: current.yml
+
+- name: Hooks Ater Current
+  include: hook.yml
+  with_items: elao_deploy_hooks_after_current
+
+- name: Cleanup
+  include: cleanup.yml

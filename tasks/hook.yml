@@ -1,0 +1,6 @@
+---
+
+- name: hook
+  include: "hook/{{ item.keys()[0] }}.yml"
+  vars:
+    options: "{{ item.values()[0] }}"

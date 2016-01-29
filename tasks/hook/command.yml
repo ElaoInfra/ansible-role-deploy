@@ -1,0 +1,6 @@
+---
+
+- name: hook/command > "{{ options }}"
+  command: "{{ options }}"
+  args:
+    chdir: "{{ elao_deploy_dir_releases ~ '/' ~ __elao_deploy_release }}"

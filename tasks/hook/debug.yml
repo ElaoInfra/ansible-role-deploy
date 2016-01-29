@@ -1,0 +1,5 @@
+---
+
+- name: hook/debug
+  debug:
+    var: options

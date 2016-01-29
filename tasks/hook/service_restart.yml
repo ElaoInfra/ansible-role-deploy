@@ -1,0 +1,6 @@
+---
+
+- name: hook/service_restart > "{{ options }}"
+  service:
+    name:  "{{ options }}"
+    state: restarted

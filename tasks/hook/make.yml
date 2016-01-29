@@ -1,0 +1,6 @@
+---
+
+- name: hook/make > {{ options }}"
+  command: "make {{ options }}"
+  args:
+    chdir: "{{ elao_deploy_dir_releases ~ '/' ~ __elao_deploy_release }}"

@@ -21,3 +21,7 @@ elao_deploy_strategy: git
 # Strategy - Git
 elao_deploy_git_repo:    git@github.com:foo/bar.git
 elao_deploy_git_version: master
+
+# Hooks
+elao_deploy_hooks_before_current: []
+elao_deploy_hooks_after_current:  []
